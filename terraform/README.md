@@ -1,0 +1,1 @@
+This directory contains example terraform modules used to provision resources in Azure for testing purposes
