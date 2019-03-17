@@ -12,6 +12,7 @@ type ResourceGroup struct {
 	Tags     map[string]string
 }
 
+// TODO: text/template support for tags
 const resourceTemplate = `
 resource "azurerm_resource_group" "{{.Name}}" {
 	name			= "{{.Name}}"
