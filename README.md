@@ -1,5 +1,6 @@
 # Azure Terraform Generator
-[![Go Report Card](https://goreportcard.com/badge/github.com/snimmagadda1/azure-terraform-generator](https://goreportcard.com/report/snimmagadda1/azure-terraform-generator)
+[![Go Report Card](https://goreportcard.com/badge/github.com/snimmagadda1/azure-terraform-generator)](https://goreportcard.com/report/github.com/snimmagadda1/azure-terraform-generator)
+
 
 Azure API -> Terraform Resources
 
