@@ -15,7 +15,7 @@ As a prerequisite to using the azure apis, credentials must be provided. Current
 The simplest way to obtain this file is throughthe creation of an Azure service principal. Either download the credentials of an existing service principal to a file my.auth in the root directory or create a new service principal as follows: 
 
 ```
-az ad sp create-for-rbac —sdk-auth > my.auth
+az ad sp create-for-rbac --sdk-auth > my.auth
 ```
 
 ## TODO
