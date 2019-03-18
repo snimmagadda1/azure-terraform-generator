@@ -21,6 +21,10 @@ const resourceTemplate = `
 resource "azurerm_resource_group" "{{.Name}}" {
 	name			= "{{.Name}}"
 	location		= "{{.Location}}"
+	tags			= {
+		{{$first := true}}{{range $key, $value := .Tags}}{{if $first}}{{$first = false}}{{else}},{{end}}
+		{{$key}} : {{$value}}{{end}}
+	}
 }
 `
 
@@ -61,11 +65,9 @@ func CreateTerraResourceGroup(name string) {
 
 	resourceGroup := getResourceGroup(name)
 
-	tmpl, err := template.New("test").Parse(resourceTemplate)
-	if err != nil {
-		panic(err)
-	}
-	err = tmpl.Execute(os.Stdout, resourceGroup)
+	tmpl := template.Must(template.New("example").Parse(resourceTemplate))
+
+	err := tmpl.Execute(os.Stdout, resourceGroup)
 	if err != nil {
 		panic(err)
 	}
