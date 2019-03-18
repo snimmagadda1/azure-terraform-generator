@@ -60,7 +60,6 @@ func getResourceGroup(resourceGroup string) ResourceGroup {
 }
 
 // CreateTerraResourceGroup creates a terraform resource defining the desired azure resource group
-// TODO: Handle map[string]*string in templating
 func CreateTerraResourceGroup(name string) {
 
 	resourceGroup := getResourceGroup(name)
