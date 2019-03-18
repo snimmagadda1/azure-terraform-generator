@@ -1,14 +1,12 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/snimmagadda1/azure-terraform-generator/pkg/azureresources"
+	"github.com/snimmagadda1/azure-terraform-generator/cmd"
 )
 
 func main() {
-	fmt.Println("Development in progress!")
+	// fmt.Println("Development in progress!")
 
-	azureresources.CreateTerraResourceGroup("testResourceGroup1")
-
+	// azureresources.CreateTerraResourceGroup("testResourceGroup1")
+	cmd.Execute()
 }
