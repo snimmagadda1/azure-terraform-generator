@@ -18,8 +18,25 @@ The simplest way to obtain this file is throughthe creation of an Azure service 
 az ad sp create-for-rbac --sdk-auth > my.auth
 ```
 
+Currently supported Azure Terraform resources:
+
+* ResourceGroup
+  1). To use simply edit main.go with the name of your resource group that you wish to generate a Terraform definition for (this will soon be invokable via a CLI):
+   ```
+   func main() {
+    fmt.Println("Development in progress!")
+   
+    azureresources.CreateTerraResourceGroup("testResourceGroup1")
+   }
+  ```
+
+  
+
+
+
 ## TODO
 This project is just getting started, so stay tuned for the intitial implementation!
+- Next: Implement CLI tool for easy usage 
 
 ## Authors
 
