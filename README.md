@@ -40,11 +40,8 @@ Currently supported Azure Terraform resources:
                 environment : Development
         }
   }
-
+  ```
   
-
-
-
 ## TODO
 This project is just getting started, so stay tuned for the intitial implementation!
 - Next: Implement CLI tool for easy usage 
