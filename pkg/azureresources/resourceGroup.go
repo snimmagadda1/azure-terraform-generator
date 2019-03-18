@@ -2,6 +2,7 @@ package azureresources
 
 import (
 	"context"
+	"log"
 	"os"
 	"text/template"
 
@@ -16,7 +17,6 @@ type ResourceGroup struct {
 	Tags     map[string]*string
 }
 
-// TODO: text/template support for tags
 const resourceTemplate = `
 resource "azurerm_resource_group" "{{.Name}}" {
 	name			= "{{.Name}}"
@@ -46,13 +46,13 @@ func getResourceGroup(resourceGroup string) ResourceGroup {
 	sess, err := azureauth.NewSessionFromFile()
 
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to initialize authorized session: %v\n", err)
 	}
 
 	returnedGroup, err := getGroup(context.Background(), sess, resourceGroup)
 
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to get Resource Group: %v\n", err)
 	}
 
 	group := ResourceGroup{Name: *returnedGroup.Name, Location: *returnedGroup.Location, Tags: returnedGroup.Tags}
@@ -68,7 +68,7 @@ func CreateTerraResourceGroup(name string) {
 
 	err := tmpl.Execute(os.Stdout, resourceGroup)
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to parse Resource Group to Terraform resource: %v\n", err)
 	}
 
 }
