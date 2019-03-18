@@ -6,7 +6,7 @@ Azure API -> Terraform Resources
 
 ## Overview
 ----
-This is a work in progress initiative to create a CLI tool to generate Terraform definitions for Azure resources. The idea for this came about when teams I've worked with had existing Azure resources but were lacking terraform definitions. As a result, this slowed down their time to production.
+This is a work in progress initiative to create a CLI tool to generate Terraform definitions for Azure resources. The idea for this came about when teams I've worked with had existing Azure resources but were lacking terraform definitions, which subsequently slowed down migrations & time to production.
 
 ## Usage
 
