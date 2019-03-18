@@ -11,7 +11,7 @@ Azure API -> Terraform Resources
 This is a work in progress initiative to create a CLI tool to generate Terraform definitions for Azure resources. The idea for this came about when teams I've worked with had existing Azure resources but were lacking terraform definitions, subsequently slowing down migrations & time to production.
 
 ## Usage
-Simply clone the repository & install to expose the cli:
+Simply clone the repository or install with `go get` & install to expose the cli:
 ```
 git clone https://github.com/snimmagadda1/azure-terraform-generator.git
 go install
