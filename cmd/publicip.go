@@ -14,7 +14,7 @@ var publicipCmd = &cobra.Command{
 	Short: "Generate terraform resource for an Azure Public IP Address",
 	Long: `By providing the name of an Azure resource group one can quickly generate the associated terraform resource:
 
-	azure-terraform-generate publicip --i test-public-ip -g TestResourceGroupName
+	azure-terraform-generator publicip --i test-public-ip -g TestResourceGroupName
 	
 	output: 
 	
