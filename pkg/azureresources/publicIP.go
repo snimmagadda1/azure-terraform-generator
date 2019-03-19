@@ -19,6 +19,7 @@ type PublicIP struct {
 	Tags                 map[string]*string
 	IPVersion            network.IPVersion
 	IdleTimeoutInMinutes *int32
+	Sku                  network.PublicIPAddressSkuName
 	//TODO  DomainNameLabel      string
 	// ReverseFqdn network.PublicIPAddress
 	Zones *[]string
@@ -29,6 +30,7 @@ resource "azurerm_public_ip" "{{.Name}}" {
 	name						= "{{.Name}}"
 	resource_group					= "{{.ResourceGroupName}}"
 	location					= "{{.Location}}"
+	sku						= "{{.Sku}}"
 	allocation_method				= "{{.AllocationMethod}}"
 	ip_version					= "{{.IPVersion}}"
 	idle_timeout_in_minutes 			= "{{.IdleTimeoutInMinutes}}"
@@ -71,6 +73,7 @@ func getPublicIPStruct(resourceGroupName string, ipName string) PublicIP {
 		Name:                 *foundIP.Name,
 		ResourceGroupName:    resourceGroupName,
 		Location:             *foundIP.Location,
+		Sku:                  foundIP.Sku.Name,
 		AllocationMethod:     foundIP.PublicIPAllocationMethod,
 		IPVersion:            foundIP.PublicIPAddressVersion,
 		IdleTimeoutInMinutes: foundIP.IdleTimeoutInMinutes,
