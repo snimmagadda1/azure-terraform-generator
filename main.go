@@ -7,6 +7,6 @@ import (
 func main() {
 	// fmt.Println("Development in progress!")
 
-	// azureresources.CreateTerraResourceGroup("testResourceGroup1")
 	cmd.Execute()
+
 }

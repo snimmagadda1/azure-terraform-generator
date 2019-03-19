@@ -50,6 +50,7 @@ Use "azure-terraform-generator [command] --help" for more information about a co
 Currently supported Azure Objects -> Terraform resources:
 
 1. [ResourceGroup](https://www.terraform.io/docs/providers/azurerm/d/resource_group.html)
+2. [Public IP Address](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html)
 
 ## TODO
 
