@@ -21,10 +21,12 @@ const resourceTemplate = `
 resource "azurerm_resource_group" "{{.Name}}" {
 	name			= "{{.Name}}"
 	location		= "{{.Location}}"
+	{{if not .Tags}}{{else}}
 	tags			= {
 		{{$first := true}}{{range $key, $value := .Tags}}{{if $first}}{{$first = false}}{{else}},{{end}}
 		{{$key}} : {{$value}}{{end}}
 	}
+	{{end}}
 }
 `
 
