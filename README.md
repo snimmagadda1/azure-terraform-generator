@@ -40,6 +40,8 @@ Usage:
 Available Commands:
   group       Generate terraform resource for an Azure ResourceGroup
   help        Help about any command
+  publicip    Generate terraform resource for an Azure Public IP Address
+  version     Print the version number of azure-terraform-generator
 
 Flags:
   -h, --help   help for azure-terraform-generator
