@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"text/tabwriter"
 	"text/template"
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/resources/mgmt/resources"
@@ -19,12 +20,12 @@ type ResourceGroup struct {
 
 const resourceTemplate = `
 resource "azurerm_resource_group" "{{.Name}}" {
-	name			= "{{.Name}}"
-	location		= "{{.Location}}"
+	name	=	"{{.Name}}"
+	location	=	"{{.Location}}"
 	{{if not .Tags}}{{else}}
-	tags			= {
+	tags	=	{
 		{{$first := true}}{{range $key, $value := .Tags}}{{if $first}}{{$first = false}}{{else}},{{end}}
-		{{$key}} : {{$value}}{{end}}
+		{{$key}}	:	{{$value}}{{end}}
 	}
 	{{end}}
 }
@@ -67,10 +68,9 @@ func CreateTerraResourceGroup(name string) {
 	resourceGroup := getResourceGroup(name)
 
 	tmpl := template.Must(template.New("example").Parse(resourceTemplate))
-
-	err := tmpl.Execute(os.Stdout, resourceGroup)
-	if err != nil {
-		log.Fatalf("Failed to parse Resource Group to Terraform resource: %v\n", err)
+	w := tabwriter.NewWriter(os.Stdout, 2, 2, 2, ' ', 0)
+	if err := tmpl.Execute(w, resourceGroup); err != nil {
+		log.Fatalf("Failed to parse Load Balancer to Terraform resource: %v\n", err)
 	}
-
+	w.Flush()
 }
