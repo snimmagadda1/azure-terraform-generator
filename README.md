@@ -54,6 +54,8 @@ Currently supported Azure Objects -> Terraform resources:
 
 1. [ResourceGroup](https://www.terraform.io/docs/providers/azurerm/d/resource_group.html)
 2. [Public IP Address](https://www.terraform.io/docs/providers/azurerm/r/public_ip.html)
+3. [Load Balancer](https://www.terraform.io/docs/providers/azurerm/r/loadbalancer.html)
+
 
 ## TODO
 
