@@ -114,7 +114,7 @@ func CreateTerraLoadBalancer(resourceGroup string, lbName string) {
 	tmpl := template.Must(template.New("loadbalancer").Parse(loadBalancerTemplate))
 	w := tabwriter.NewWriter(os.Stdout, 2, 2, 2, ' ', 0)
 	if err := tmpl.Execute(w, loadBalancer); err != nil {
-		log.Fatalf("Failed to parse PublicIPAddress to Terraform resource: %v\n", err)
+		log.Fatalf("Failed to parse Load Balancer to Terraform resource: %v\n", err)
 	}
 	w.Flush()
 }

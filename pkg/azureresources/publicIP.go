@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"text/tabwriter"
 	"text/template"
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/network/mgmt/network"
@@ -27,21 +28,21 @@ type PublicIP struct {
 
 const publicIPAddressTemplate = `
 resource "azurerm_public_ip" "{{.Name}}" {
-	name						= "{{.Name}}"
-	resource_group					= "{{.ResourceGroupName}}"
-	location					= "{{.Location}}"
-	sku						= "{{.Sku}}"
-	allocation_method				= "{{.AllocationMethod}}"
-	ip_version					= "{{.IPVersion}}"
-	idle_timeout_in_minutes 			= "{{.IdleTimeoutInMinutes}}"
+	name	=	"{{.Name}}"
+	resource_group	=	"{{.ResourceGroupName}}"
+	location	=	"{{.Location}}"
+	sku	=	"{{.Sku}}"
+	allocation_method	=	"{{.AllocationMethod}}"
+	ip_version	=	"{{.IPVersion}}"
+	idle_timeout_in_minutes	=	"{{.IdleTimeoutInMinutes}}"
 	{{if not .Tags}}{{else}}
-	tags						= {
+	tags	=	{
 		{{$first := true}}{{range $key, $value := .Tags}}{{if $first}}{{$first = false}}{{else}},{{end}}
-		{{$key}} : {{$value}}{{end}}
+		{{$key}}	:	{{$value}}{{end}}
 	}
 	{{end}}
 	{{if not .Zones }}{{else}}
-	zones 						="{{range $zone := .Zones}} {{$zone}} {{end}}"{{end}}
+	zones	=	"{{range $zone := .Zones}} {{$zone}} {{end}}"{{end}}
 }
 `
 
@@ -90,9 +91,9 @@ func CreateTerraPublicIPAddress(resourceGroupName string, ipName string) {
 	publicIP := getPublicIPStruct(resourceGroupName, ipName)
 
 	tmpl := template.Must(template.New("public-ip").Parse(publicIPAddressTemplate))
-
-	err := tmpl.Execute(os.Stdout, publicIP)
-	if err != nil {
+	w := tabwriter.NewWriter(os.Stdout, 2, 2, 2, ' ', 0)
+	if err := tmpl.Execute(w, publicIP); err != nil {
 		log.Fatalf("Failed to parse PublicIPAddress to Terraform resource: %v\n", err)
 	}
+	w.Flush()
 }
