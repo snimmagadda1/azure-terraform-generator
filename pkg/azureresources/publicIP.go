@@ -74,6 +74,7 @@ func getPublicIPStruct(resourceGroupName string, ipName string) PublicIP {
 		AllocationMethod:     foundIP.PublicIPAllocationMethod,
 		IPVersion:            foundIP.PublicIPAddressVersion,
 		IdleTimeoutInMinutes: foundIP.IdleTimeoutInMinutes,
+		Tags:                 foundIP.Tags,
 		// ReverseFqdn:          foundIP.ReverseFqdn,
 	}
 
