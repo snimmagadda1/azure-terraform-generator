@@ -10,7 +10,7 @@ var groupName string
 // groupCmd represents the group command
 var groupCmd = &cobra.Command{
 	Use:   "group",
-	Short: "Generate terraform resource for an Azure ResourceGroup",
+	Short: "Generate terraform resource for an Azure Resource Group",
 	Long: `By providing the name of an Azure resource group one can quickly generate the associated terraform resource:
 
 azure-terraform-generator group --name TestResourceGroupName
