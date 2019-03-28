@@ -24,7 +24,7 @@ type LoadBalancer struct {
 	FIPPrivateIPAddress           string
 	FIPPrivateIPAddressAllocation network.IPAllocationMethod
 	FIPPublicIPAddressID          string
-	// TODO is this available via api?
+	// TODO is this available via api for frontend ip config block?
 	// Zones                         *[]string
 }
 
