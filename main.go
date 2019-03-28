@@ -5,8 +5,5 @@ import (
 )
 
 func main() {
-	// fmt.Println("Development in progress!")
-
 	cmd.Execute()
-
 }
