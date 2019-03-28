@@ -38,10 +38,11 @@ Usage:
   azure-terraform-generator [command]
 
 Available Commands:
-  group       Generate terraform resource for an Azure ResourceGroup
-  help        Help about any command
-  publicip    Generate terraform resource for an Azure Public IP Address
-  version     Print the version number of azure-terraform-generator
+  group        Generate terraform resource for an Azure ResourceGroup
+  help         Help about any command
+  loadbalancer Generate a terraform resource for an Azure load balancer
+  publicip     Generate terraform resource for an Azure Public IP Address
+  version      Print the version number of azure-terraform-generator
 
 Flags:
   -h, --help   help for azure-terraform-generator
